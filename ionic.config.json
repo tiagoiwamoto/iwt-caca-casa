@@ -1,0 +1,8 @@
+{
+  "name": "caça-casa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "97e1cb6b"
+}
