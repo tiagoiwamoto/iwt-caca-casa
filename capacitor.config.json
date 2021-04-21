@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "br.com.tiagoiwamoto.cacacasa",
   "appName": "caça-casa",
   "bundledWebRuntime": false,
   "npmClient": "npm",
@@ -9,5 +9,6 @@
       "launchShowDuration": 0
     }
   },
-  "cordova": {}
+  "cordova": {},
+  "windowsAndroidStudioPath": "C:\\Users\\tiago\\AppData\\Local\\JetBrains\\Toolbox\\apps\\AndroidStudio\\ch-0\\201.7199119\\bin\\studio64.exe"
 }

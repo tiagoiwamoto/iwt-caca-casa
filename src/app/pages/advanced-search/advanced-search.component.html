@@ -1,0 +1,59 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="primary">
+        <ion-button (click)="closeModal()">
+          <ion-icon slot="icon-only" ios="close-outline" md="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>BUSCA AVANÇADA</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card>
+      <div style="padding: 5px">
+        <ion-chip outline color="primary" *ngFor="let filter of selectedFilters">
+          <ion-label>{{ filter }}</ion-label>
+        </ion-chip>
+      </div>
+      <hr />
+      <ion-item class="item-background-color" lines="inset">
+        <ion-label position="floating">Digite seu estado ou cidade</ion-label>
+        <ion-input (keyup)="validFilters()" [(ngModel)]="advancedSearch.cityOrState"></ion-input>
+      </ion-item>
+      <ion-item class="item-background-color" lines="none" *ngIf="advancedSearch.cityOrState !== undefined && advancedSearch.cityOrState.length > 0">
+        <ion-label class="range-label">Aumente o alcance da busca</ion-label>
+      </ion-item>
+      <ion-item class="item-background-color" lines="inset" *ngIf="advancedSearch.cityOrState !== undefined && advancedSearch.cityOrState.length > 0">
+        <ion-range (ionChange)="validFilters()" pin min="0" max="50" step="5" snaps="true" ticks="true" [(ngModel)]="advancedSearch.range" color="secondary" class="ion-range-knob"></ion-range>
+      </ion-item>
+
+      <ion-item class="item-background-color" lines="none">
+        <ion-label class="range-label">Padrão do imóvel</ion-label>
+      </ion-item>
+      <ion-list class="item-background-color">
+        <ion-item class="item-background-color" lines="inset" style="padding-right: 1em">
+          <ion-select (ionChange)="validFilters()" placeholder="Selecione um padrão" [(ngModel)]="advancedSearch.type">
+            <ion-select-option value="default_high">Alto padrão</ion-select-option>
+            <ion-select-option value="default_medium">Médio padrão</ion-select-option>
+            <ion-select-option value="default_low">Baixo padrão</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item class="item-background-color" lines="inset">
+        <ion-label position="floating">Valor minimo</ion-label>
+        <ion-input (keyup)="validFilters()" [(ngModel)]="advancedSearch.minValue"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-background-color" lines="inset">
+        <ion-label position="floating">Valor máximo</ion-label>
+        <ion-input (keyup)="validFilters()" [(ngModel)]="advancedSearch.maxValue"></ion-input>
+      </ion-item>
+
+      <div class="button-center" style="padding-top: 10px">
+        <ion-button (click)="checkFields()" expand="block" color="danger">BUSCAR</ion-button>
+      </div>
+    </ion-card>
+  </ion-content>
+</ion-app>

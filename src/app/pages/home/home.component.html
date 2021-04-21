@@ -1,0 +1,56 @@
+<ion-card>
+  <ion-card-content>
+    <ion-segment value="BUY_HOUSE" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="BUY_HOUSE">
+        <ion-label>COMPRAR <br />CASA</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="BUY_APTO">
+        <ion-label>COMPRAR <br />APTO</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="WANT_SELL">
+        <ion-label>QUERO <br />VENDER</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-grid>
+      <ion-row *ngIf="selectedSegment === 0">
+        <ion-item class="item-background-color w-100">
+          <ion-label position="floating">Digite a cidade ou bairro da casa</ion-label>
+          <ion-input class="input-w100"></ion-input>
+        </ion-item>
+        <div class="button-center">
+          <ion-button expand="block" color="danger" (click)="openList()">VER OFERTAS (267.889)</ion-button>
+        </div>
+        <div class="ion-text-center advanced-search-label" (click)="presentModal()">
+          <ion-icon name="options-outline" slot="start"></ion-icon>
+          <ion-label>
+            BUSCA AVANÇADA
+          </ion-label>
+        </div>
+      </ion-row>
+      <ion-row *ngIf="selectedSegment == 1">
+        <ion-item class="item-background-color w-100">
+          <ion-label position="floating">Digite a cidade ou bairro do apto</ion-label>
+          <ion-input class="input-w100"></ion-input>
+        </ion-item>
+        <div class="button-center">
+          <ion-button expand="block" color="danger" (click)="openList()">VER OFERTAS (89.551)</ion-button>
+        </div>
+        <div class="ion-text-center advanced-search-label" (click)="presentModal()">
+          <ion-icon name="options-outline" slot="start"></ion-icon>
+          <ion-label>
+            BUSCA AVANÇADA
+          </ion-label>
+        </div>
+      </ion-row>
+      <ion-row *ngIf="selectedSegment == 2">
+        <ion-item class="item-background-color w-100">
+          <ion-label position="floating">O que você quer vender ?</ion-label>
+          <ion-input class="input-w100"></ion-input>
+        </ion-item>
+        <div class="button-center">
+          <ion-button expand="block" color="danger">ANUNCIAR JÁ</ion-button>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

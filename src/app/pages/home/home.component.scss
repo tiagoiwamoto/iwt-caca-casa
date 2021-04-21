@@ -1,0 +1,25 @@
+.item .item-content {
+  background-color: transparent !important;
+}
+.item-background-color{
+  --ion-item-background:transparent;
+}
+
+.button-center{
+  width: 100%;
+  padding-top: 5px
+}
+
+.advanced-search-label{
+  font-size: 0.8em;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.input-w100{
+  --size: 100%;
+}
