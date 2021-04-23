@@ -10,9 +10,10 @@ import {FormsModule} from '@angular/forms';
 import {AdvancedSearchComponent} from './pages/advanced-search/advanced-search.component';
 import {ListPropertiesComponent} from './pages/list-properties/list-properties.component';
 import {HomeComponent} from './pages/home/home.component';
+import {SideMenuComponent} from './pages/core/side-menu/side-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ListPropertiesComponent, AdvancedSearchComponent],
+    declarations: [AppComponent, HomeComponent, ListPropertiesComponent, AdvancedSearchComponent, SideMenuComponent],
   entryComponents: [],
   imports: [BrowserModule, FormsModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

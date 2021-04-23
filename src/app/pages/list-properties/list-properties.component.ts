@@ -16,4 +16,8 @@ export class ListPropertiesComponent implements OnInit {
     this.router.navigate(['/detail']);
   }
 
+  goToHome(): void{
+    this.router.navigate(['/home']);
+  }
+
 }

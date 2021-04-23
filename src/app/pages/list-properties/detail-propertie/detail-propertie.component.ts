@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-detail-propertie',
@@ -7,8 +8,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class DetailPropertieComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+
+  goToHome(): void{
+    this.router.navigate(['/list']);
+  }
 
 }
