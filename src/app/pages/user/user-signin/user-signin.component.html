@@ -1,3 +1,28 @@
-<p>
-  user-signin works!
-</p>
+<ion-content fullscreen>
+
+  <ion-card>
+    <div class="ion-text-center">
+      <p>LOGO</p>
+    </div>
+    <hr />
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="userInterface.email" id="email" autocomplete="off"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input [(ngModel)]="userInterface.password" id="password" type="password"></ion-input>
+    </ion-item>
+
+    <div class="button-center">
+      <ion-button (click)="performLogin()" expand="block" color="danger">ENTRAR</ion-button>
+    </div>
+    <hr />
+    <div class="ion-text-center">
+      <ion-button (click)="goToRegister()" expand="block" fill="outline" color="tertiary">NÃO TENHO CADASTRO</ion-button>
+    </div>
+  </ion-card>
+
+</ion-content>
+

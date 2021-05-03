@@ -5,12 +5,17 @@
         <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
       </ion-avatar>
       <ion-label>
-        <p>Olá, Visitante.</p>
+        <p>Olá, {{ userInterface === null ? 'Visitante' : userInterface.name }}.</p>
       </ion-label>
     </ion-item>
-    <ion-item button detail lines="none">
-      <ion-label>
+    <ion-item button detail lines="none" *ngIf="userInterface === null">
+      <ion-label (click)="navigateTo('/login')">
         Entre ou Cadastre-se
+      </ion-label>
+    </ion-item>
+    <ion-item button detail lines="none" *ngIf="userInterface !== null">
+      <ion-label>
+        Sair
       </ion-label>
     </ion-item>
   </ion-header>

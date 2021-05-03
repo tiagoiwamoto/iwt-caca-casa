@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {HttpActionEnum} from '../view-models/http-action.enum';
 
 @Injectable({
@@ -9,12 +9,12 @@ export class AppGatewayService {
 
   constructor(private http: HttpClient) { }
 
-  public async call(path: string, body: any, httpAction: HttpActionEnum): Promise<any>{
+  public async call(path: string, body: any, httpAction: HttpActionEnum, appHeaders: HttpHeaders): Promise<any>{
     switch (httpAction){
       case HttpActionEnum.GET:
         return this.http.get(path).toPromise();
       case HttpActionEnum.POST:
-        return this.http.post(path, JSON.stringify(body)).toPromise();
+        return this.http.post(path, JSON.stringify(body), {headers: appHeaders}).toPromise();
       case HttpActionEnum.PUT:
         return this.http.put(path, JSON.stringify(body)).toPromise();
       case HttpActionEnum.DELETE:

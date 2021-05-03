@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {MenuController} from '@ionic/angular';
+import {UserInterface} from '../../../view-models/user.interface';
 
 @Component({
   selector: 'app-side-menu',
@@ -7,8 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor() { }
+  userInterface: UserInterface;
 
-  ngOnInit() {}
+  constructor(private router: Router,
+              private menu: MenuController) {
+    this.checkUser();
+  }
+
+  ngOnInit() {
+  }
+
+  async navigateTo(url: string): Promise<void> {
+    await this.menu.close();
+    await this.router.navigate([url]);
+  }
+
+  checkUser(){
+    if(localStorage.getItem('user') !== undefined){
+      this.userInterface = JSON.parse(localStorage.getItem('user'));
+    }else{
+      this.userInterface = null;
+    }
+  }
 
 }

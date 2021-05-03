@@ -1,3 +1,29 @@
-<p>
-  user-sign works!
-</p>
+<ion-content fullscreen>
+
+  <ion-card>
+    <div class="ion-text-center">
+      <p>LOGO</p>
+    </div>
+    <hr />
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input [(ngModel)]="userInterface.name" id="name" autocomplete="off"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="userInterface.email" id="email" autocomplete="off"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input [(ngModel)]="userInterface.password" id="password" [type]="type"></ion-input>
+      <ion-icon slot="end" [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+    </ion-item>
+
+    <div class="button-center">
+      <ion-button (click)="performSign()" expand="block" color="danger">CADASTRAR</ion-button>
+    </div>
+  </ion-card>
+
+</ion-content>
+
