@@ -14,20 +14,20 @@
       </ion-label>
     </ion-item>
     <ion-item button detail lines="none" *ngIf="userInterface !== null">
-      <ion-label>
+      <ion-label (click)="performSignOut()">
         Sair
       </ion-label>
     </ion-item>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item button detail>
+      <ion-item *ngIf="userInterface !== null" (click)="navigateTo('/product/register')" button detail>
+        <ion-icon slot="start" name="people-outline"></ion-icon>
+        <ion-label>Cadastrar imóvel</ion-label>
+      </ion-item>
+      <ion-item *ngIf="userInterface !== null" button detail>
         <ion-icon slot="start" name="heart-outline"></ion-icon>
         <ion-label>Favoritos</ion-label>
-      </ion-item>
-      <ion-item button detail>
-        <ion-icon slot="start" name="people-outline"></ion-icon>
-        <ion-label>Visitas</ion-label>
       </ion-item>
       <ion-item button detail>
         <ion-icon slot="start" name="alert-circle-outline"></ion-icon>

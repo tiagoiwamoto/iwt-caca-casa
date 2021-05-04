@@ -33,4 +33,9 @@ export class SideMenuComponent implements OnInit {
     }
   }
 
+  async performSignOut(): Promise<void>{
+    localStorage.removeItem('user');
+    await this.router.navigate(['/home']).then(() => window.location.reload());
+  }
+
 }

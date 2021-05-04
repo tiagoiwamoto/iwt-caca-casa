@@ -1,0 +1,59 @@
+<ion-content fullscreen>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!--        <ion-button>-->
+      <!--          <ion-icon slot="icon-only" ios="reorder-four-outline" md="reorder-four-outline"></ion-icon>-->
+      <!--        </ion-button>-->
+      <ion-menu-button color="dark" menu="start" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>CaçaCasa</ion-title>
+  </ion-toolbar>
+  <ion-card>
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input [(ngModel)]="userProduct.title" id="title" autocomplete="off"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input [(ngModel)]="userProduct.description" id="description" autocomplete="off"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Valor</ion-label>
+      <ion-input [(ngModel)]="userProduct.price" id="price" autocomplete="off"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tags</ion-label>
+      <ion-input id="tags" [(ngModel)]="tmpTag" autocomplete="off"></ion-input>
+      <ion-icon slot="end" name="add-circle-outline" class="tagIcon" (click)='addToTags(tmpTag)'></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-chip color="success" *ngFor="let tag of tags">
+        <ion-label>{{tag}}</ion-label>
+      </ion-chip>
+    </ion-item>
+
+    <label>Cada imagem selecionada sera enviada automaticamente</label>
+    <hr />
+    <div class="upload-btn-wrapper button-center">
+      <ion-button expand="block" color="secondary">Selecionar imagem</ion-button>
+      <input type="file" name="file" (change)="upload($event)" />
+    </div>
+    <div class="button-center ion-text-center">
+      <img [src]="tmpImages[tmpImages.length - 1]" height="200" />
+    </div>
+    <hr />
+    <div class="button-center">
+      <ion-button expand="block" color="danger">CADASTRAR</ion-button>
+    </div>
+
+  </ion-card>
+
+</ion-content>
+
+

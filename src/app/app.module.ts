@@ -14,6 +14,7 @@ import {SideMenuComponent} from './pages/core/side-menu/side-menu.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserSigninComponent} from './pages/user/user-signin/user-signin.component';
 import {UserSignComponent} from './pages/user/user-sign/user-sign.component';
+import {UserProductRegisterComponent} from './pages/user/user-products/user-product-register/user-product-register.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import {UserSignComponent} from './pages/user/user-sign/user-sign.component';
       AdvancedSearchComponent,
       SideMenuComponent,
       UserSigninComponent,
-      UserSignComponent
+      UserSignComponent,
+      UserProductRegisterComponent
     ],
   entryComponents: [],
   imports: [BrowserModule, HttpClientModule, FormsModule, IonicModule.forRoot(), AppRoutingModule],
