@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProductInterface} from '../../../../view-models/product.interface';
-import {ProductImageInterface} from '../../../../view-models/product-image.interface';
 import {LoadingController, ToastController} from '@ionic/angular';
+import {UserProductvoInterface} from '../../../../view-models/user-productvo.interface';
+import {ApiDtoInterface} from '../../../../view-models/api-dto.interface';
+import {AppGatewayService} from '../../../../services/app-gateway.service';
+import {environment} from '../../../../../environments/environment.prod';
+import {HttpActionEnum} from '../../../../view-models/http-action.enum';
+import {UserInterface} from '../../../../view-models/user.interface';
 
 
 @Component({
@@ -14,19 +19,59 @@ export class UserProductRegisterComponent implements OnInit {
 
   image;
   userProduct: ProductInterface;
-  imgUploadLoading;
+  userInterface: UserInterface;
+  apiDto: ApiDtoInterface;
+  userProductVo: UserProductvoInterface;
   tags;
   tmpTag;
   tmpImages = [];
 
   constructor(private http: HttpClient,
+              private appGateway: AppGatewayService,
               private toastController: ToastController,
               private loadingController: LoadingController) {
     this.userProduct = {};
+    this.apiDto = {};
     this.tags = [];
   }
 
   ngOnInit() {}
+
+  async performSaveProduct(): Promise<void>{
+    this.userProduct.tagValue = this.tags.toString();
+    this.userInterface = JSON.parse(localStorage.getItem('user'));
+    this.userProduct.user = this.userInterface;
+    this.userProductVo = {
+      product: this.userProduct,
+      images: this.tmpImages
+    };
+    const loading = await this.loadingController.create({
+      message: 'Gravando imóvel',
+    });
+    await loading.present();
+    const customHeaders = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+    this.appGateway.call(
+      environment.url.concat('/v1/api/products'),
+      this.userProductVo, HttpActionEnum.POST, customHeaders).then(async res => {
+        console.log(res);
+        this.apiDto = res;
+        await loading.dismiss();
+        // @ts-ignore
+        const toast = await this.toastController.create({message: this.apiDto.message, duration: 2000});
+        await toast.present();
+        this.userProduct = {};
+        this.tmpImages = [];
+        this.tags = [];
+        this.userProductVo = {};
+        this.apiDto = {};
+    }).catch(async error => {
+      console.log(error);
+      await loading.dismiss();
+      const toast = await this.toastController.create({message: 'Falha ao cadastrar imóvel', duration: 2000});
+      await toast.present();
+    });
+  }
 
   async upload(str: any): Promise<void> {
     const loading = await this.loadingController.create({
