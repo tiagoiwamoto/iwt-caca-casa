@@ -1,3 +1,73 @@
-<p>
-  product-details works!
-</p>
+<ion-content fullscreen>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="primary">
+        <ion-button (click)="closeModal()">
+          <ion-icon slot="icon-only" ios="close-outline" md="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>DETALHES DO IMÓVEL</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-slides pager="true">
+
+      <ion-slide *ngFor="let slide of product.images">
+        <div class="slide">
+          <img [src]="slide" />
+        </div>
+      </ion-slide>
+
+    </ion-slides>
+    <ion-row>
+      <div class="title-detail">
+        <ion-label>{{product.title}}</ion-label>
+      </div>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="value-detail">
+          <ion-label>{{product.price | currency: 'BRL'}}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <ion-button size="small" color="danger">Ver Parcelas</ion-button>
+        <ion-button size="small" color="danger">
+          <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <div class="info-detail">
+        <p>{{product.description}}</p>
+      </div>
+    </ion-row>
+
+    <ion-row>
+      <ion-list>
+        <ion-list-header>
+          Detalhes da casa
+        </ion-list-header>
+
+        <ion-item *ngFor="let detail of productDetails">
+          <ion-avatar slot="start">
+            <ion-icon name="checkmark-done-outline"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <p>{{detail}}</p>
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-row>
+  </ion-card>
+
+  <ion-row>
+    <div class="button-center">
+      <ion-button expand="block" color="danger">Enviar mensagem</ion-button>
+    </div>
+  </ion-row>
+</ion-content>
+
+

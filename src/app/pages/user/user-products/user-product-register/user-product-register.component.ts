@@ -8,6 +8,7 @@ import {AppGatewayService} from '../../../../services/app-gateway.service';
 import {environment} from '../../../../../environments/environment.prod';
 import {HttpActionEnum} from '../../../../view-models/http-action.enum';
 import {UserInterface} from '../../../../view-models/user.interface';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class UserProductRegisterComponent implements OnInit {
   tmpImages = [];
 
   constructor(private http: HttpClient,
+              private router: Router,
               private appGateway: AppGatewayService,
               private toastController: ToastController,
               private loadingController: LoadingController) {
@@ -103,6 +105,10 @@ export class UserProductRegisterComponent implements OnInit {
   addToTags(tag: string){
     this.tags.push(tag);
     this.tmpTag = '';
+  }
+
+  goToHome(): void{
+    this.router.navigate(['/home']);
   }
 
 }

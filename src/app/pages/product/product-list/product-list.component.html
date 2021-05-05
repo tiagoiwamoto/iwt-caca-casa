@@ -1,3 +1,36 @@
-<p>
-  product-list works!
-</p>
+<ion-content fullscreen>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!--        <ion-button>-->
+      <!--          <ion-icon slot="icon-only" ios="reorder-four-outline" md="reorder-four-outline"></ion-icon>-->
+      <!--        </ion-button>-->
+      <ion-menu-button color="dark" menu="start" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Sua nova casa ta aqui</ion-title>
+  </ion-toolbar>
+  <ion-card (click)="presentModal(product)" *ngFor="let product of products">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4"><img [src]="product.images[0]" width="200" /> </ion-col>
+        <ion-col size="8">
+          <p><b>{{product.title}}</b></p>
+          <ion-text color="warning">
+            <h5>{{product.price | currency: 'BRL'}}</h5>
+          </ion-text>
+          <p>{{product.description}}</p>
+          <hr />
+          <ion-text color="secondary">
+            <ion-icon icon="location" class="list-label"></ion-icon> São Paulo - SP
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
+
