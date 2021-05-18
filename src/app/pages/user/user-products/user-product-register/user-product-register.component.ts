@@ -26,6 +26,7 @@ export class UserProductRegisterComponent implements OnInit {
   tags;
   tmpTag;
   tmpImages = [];
+  cities = [];
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -35,11 +36,38 @@ export class UserProductRegisterComponent implements OnInit {
     this.userProduct = {};
     this.apiDto = {};
     this.tags = [];
+    this.populateCities();
   }
 
   ngOnInit() {}
 
   async performSaveProduct(): Promise<void>{
+    if(this.userProduct.title === undefined || this.userProduct.title.length < 1){
+      const toast = await this.toastController.create({message: 'Informe um titulo', duration: 2000});
+      await toast.present();
+      return;
+    }else if(this.userProduct.description === undefined || this.userProduct.description.length < 1) {
+      const toast = await this.toastController.create({message: 'Informe uma descrição', duration: 2000});
+      await toast.present();
+      return;
+    }else if(this.userProduct.price === undefined || this.userProduct.price < 1) {
+      const toast = await this.toastController.create({message: 'Informe um valor', duration: 2000});
+      await toast.present();
+      return;
+    }else if(this.tags.toString() === undefined || this.tags.toString().length < 1) {
+      const toast = await this.toastController.create({message: 'Informe pelo menos uma tag', duration: 2000});
+      await toast.present();
+      return;
+    }
+    else if(this.userProduct.uf === undefined || this.userProduct.uf.length < 1) {
+      const toast = await this.toastController.create({message: 'Informe o estado', duration: 2000});
+      await toast.present();
+      return;
+    }else if(this.userProduct.city === undefined || this.userProduct.city.length < 1) {
+      const toast = await this.toastController.create({message: 'Informe a cidade', duration: 2000});
+      await toast.present();
+      return;
+    }
     this.userProduct.tagValue = this.tags.toString();
     this.userInterface = JSON.parse(localStorage.getItem('user'));
     this.userProduct.user = this.userInterface;
@@ -107,8 +135,44 @@ export class UserProductRegisterComponent implements OnInit {
     this.tmpTag = '';
   }
 
+  moneyConvert(event: any) {
+    this.userProduct.price = event.target.value.replace(/[^\d\.]/g ,'');
+  }
+
   goToHome(): void{
     this.router.navigate(['/home']);
+  }
+
+  populateCities(){
+    this.userProduct.city = '';
+    switch (this.userProduct.uf){
+      case 'SP':
+        this.cities = [
+          {name: 'São Paulo', value: 'saopaulo'},
+          {name: 'Campinas', value: 'campinas'},
+          {name: 'São bernardo', value: 'saobernardo'},
+        ];
+        break;
+      case 'RG':
+        this.cities = [
+          {name: 'Botafogo', value: 'botafogo'},
+          {name: 'Barra da tijuca', value: 'barratijuca'},
+        ];
+        break;
+      case 'MG':
+        this.cities = [
+          {name: 'Belo horizonte', value: 'belohorizonte'},
+        ];
+        break;
+      case 'PR':
+        this.cities = [
+          {name: 'Curitiba', value: 'curitiba'},
+          {name: 'Londrina', value: 'londrina'},
+        ];
+        break;
+      default:
+        this.cities = [];
+    }
   }
 
 }

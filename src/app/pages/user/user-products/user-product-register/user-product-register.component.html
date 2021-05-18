@@ -25,7 +25,22 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Valor</ion-label>
-      <ion-input [(ngModel)]="userProduct.price" id="price" autocomplete="off"></ion-input>
+      <ion-input [(ngModel)]="userProduct.price" (keyup)="moneyConvert($event)" id="price" autocomplete="off"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estado</ion-label>
+      <ion-select value="notifications" interface="action-sheet" [(ngModel)]="userProduct.uf" (ionChange)="populateCities()">
+        <ion-select-option value="SP">SP</ion-select-option>
+        <ion-select-option value="PR">PR</ion-select-option>
+        <ion-select-option value="RG">RG</ion-select-option>
+        <ion-select-option value="MG">MG</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="userProduct.uf !== undefined && userProduct.uf.length > 0">
+      <ion-label>Cidade</ion-label>
+      <ion-select value="notifications" interface="action-sheet" [(ngModel)]="userProduct.city">
+        <ion-select-option [value]="city.value" *ngFor="let city of cities">{{city.name}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Tags</ion-label>
@@ -45,7 +60,14 @@
       <input type="file" name="file" (change)="upload($event)" />
     </div>
     <div class="button-center ion-text-center">
-      <img [src]="tmpImages[tmpImages.length - 1]" height="200" />
+      <ion-slides pager="true">
+
+        <ion-slide *ngFor="let slide of tmpImages">
+          <div class="slide">
+            <img [src]="slide" height="200" />
+          </div>
+        </ion-slide>
+      </ion-slides>
     </div>
     <hr />
     <div class="button-center">

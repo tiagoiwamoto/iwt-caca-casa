@@ -6,6 +6,8 @@ export interface ProductInterface{
   description?: string;
   price?: number;
   tagValue?: string;
+  uf?: string;
+  city?: string;
   createAt?: Date;
   user?: UserInterface;
 }
