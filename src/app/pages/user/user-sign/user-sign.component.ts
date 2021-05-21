@@ -25,7 +25,7 @@ export class UserSignComponent implements OnInit {
               private toastController: ToastController,
               private loadingController: LoadingController,
               private router: Router) {
-    this.userInterface = {};
+    this.userInterface = {userType: 'USUARIO'};
   }
 
   ngOnInit() {}
@@ -60,6 +60,11 @@ export class UserSignComponent implements OnInit {
     this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
     this.type = this.type === 'password' ? 'text' : 'password';
+  }
+
+  segmentChanged(usertype: Event): void {
+    // @ts-ignore
+    this.userInterface.userType = usertype.detail.value;
   }
 
 }

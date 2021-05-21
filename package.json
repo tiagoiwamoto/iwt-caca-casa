@@ -33,6 +33,7 @@
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-filechooser": "^1.2.0",
     "cordova-plugin-filepath": "^1.6.0",
+    "jetifier": "^2.0.0",
     "phonegap-plugin-multidex": "^1.0.0",
     "phonegap-plugin-push": "^2.3.0",
     "rxjs": "~6.6.0",

@@ -22,7 +22,7 @@ export class UserSigninComponent implements OnInit {
               private toastController: ToastController,
               private loadingController: LoadingController,
               private router: Router) {
-    this.userInterface = {userType: 'USUARIO'};
+    this.userInterface = {};
     this.apiDto = {};
   }
 
@@ -58,12 +58,6 @@ export class UserSigninComponent implements OnInit {
 
   async goToRegister(): Promise<any> {
     await this.router.navigate(['/cadastrar']);
-  }
-
-  segmentChanged(usertype: Event): void {
-    // @ts-ignore
-    this.userInterface.userType = usertype.detail.value;
-    console.log(this.userInterface.userType);
   }
 
 }

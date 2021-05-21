@@ -2,7 +2,8 @@
 
   <ion-card>
     <div class="ion-text-center">
-      <p>LOGO</p>
+      <p></p>
+      <img src="assets/icon/cacacasa.png" width="64" />
     </div>
     <hr />
     <ion-item>
@@ -18,6 +19,24 @@
       <ion-label position="floating">Senha</ion-label>
       <ion-input [(ngModel)]="userInterface.password" id="password" [type]="type"></ion-input>
       <ion-icon slot="end" [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sou corretor</ion-label>
+      <ion-segment scrollable value="USUARIO" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="USUARIO">
+          <ion-label>Quero <br />comprar</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="CORRETOR">
+          <ion-label>Sou <br />corretor</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="IMOBILIARIA">
+          <ion-label>Sou <br />imobiliária</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="CONSTRUTORA">
+          <ion-label>Sou <br />construtora</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </ion-item>
 
     <div class="button-center">
