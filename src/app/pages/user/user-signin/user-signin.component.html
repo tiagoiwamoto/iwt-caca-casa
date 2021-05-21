@@ -15,6 +15,24 @@
       <ion-input [(ngModel)]="userInterface.password" id="password" type="password"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label>Sou corretor</ion-label>
+      <ion-segment scrollable value="USUARIO" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="USUARIO">
+          <ion-label>Quero <br />comprar</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="CORRETOR">
+          <ion-label>Sou <br />corretor</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="IMOBILIARIA">
+          <ion-label>Sou <br />imobiliária</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="CONSTRUTORA">
+          <ion-label>Sou <br />construtora</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-item>
+
     <div class="button-center">
       <ion-button (click)="performLogin()" expand="block" color="danger">ENTRAR</ion-button>
     </div>
