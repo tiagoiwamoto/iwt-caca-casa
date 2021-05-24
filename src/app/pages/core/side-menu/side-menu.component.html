@@ -21,7 +21,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item *ngIf="userInterface !== null" (click)="navigateTo('/product/register')" button detail>
+      <ion-item *ngIf="userInterface !== null && userInterface.userType !== 'CORRETOR'" (click)="navigateTo('/product/register')" button detail>
         <ion-icon slot="start" name="people-outline"></ion-icon>
         <ion-label>Cadastrar imóvel</ion-label>
       </ion-item>

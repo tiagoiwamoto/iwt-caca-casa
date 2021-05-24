@@ -8,6 +8,7 @@ import {ApiDtoInterface} from '../../view-models/api-dto.interface';
 import {HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment.prod';
 import {HttpActionEnum} from '../../view-models/http-action.enum';
+import {UserInterface} from '../../view-models/user.interface';
 
 @Component({
   selector: 'app-home',
@@ -19,10 +20,14 @@ export class HomeComponent implements OnInit {
   apiDto: ApiDtoInterface;
   totalProducts = 0;
   selectedSegment;
+  userInterface: UserInterface;
+
   constructor(private appGateway: AppGatewayService,
               private modalController: ModalController,
               private router: Router) {
     this.selectedSegment = SegmentActionEnum.BUY_HOUSE;
+    this.userInterface = {};
+    this.isCorretor();
   }
 
   async ngOnInit(): Promise<void> {
@@ -69,6 +74,14 @@ export class HomeComponent implements OnInit {
     }).catch(async error => {
       console.log(error);
     });
+  }
+
+  isCorretor(): void{
+    if(localStorage.getItem('user') !== undefined){
+      this.userInterface = JSON.parse(localStorage.getItem('user'));
+    }else{
+      this.userInterface = null;
+    }
   }
 
 }
