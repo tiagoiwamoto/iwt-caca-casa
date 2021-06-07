@@ -9,6 +9,9 @@
       "launchShowDuration": 0
     }
   },
+  "PushNotifications": {
+    "presentationOptions": ["badge", "sound", "alert"]
+  },
   "cordova": {},
   "windowsAndroidStudioPath": "C:\\Users\\tiago\\AppData\\Local\\JetBrains\\Toolbox\\apps\\AndroidStudio\\ch-0\\201.7199119\\bin\\studio64.exe"
 }

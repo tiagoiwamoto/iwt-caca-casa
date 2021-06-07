@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
+import {IonicStorageModule} from '@ionic/storage';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -17,6 +18,15 @@ import {UserProductRegisterComponent} from './pages/user/user-products/user-prod
 import {ProductListComponent} from './pages/product/product-list/product-list.component';
 import {ProductDetailsComponent} from './pages/product/product-details/product-details.component';
 
+const config = {
+  apiKey: 'AIzaSyCKbKN9WRyyPprJczGcA4hfFUD22x-e9mw',
+  authDomain: 'caca-casa.firebaseapp.com',
+  databaseURL: 'https://caca-casa-default-rtdb.firebaseio.com',
+  projectId: 'caca-casa',
+  storageBucket: 'caca-casa.appspot.com',
+  messagingSenderId: '5158821869'
+};
+
 @NgModule({
     declarations: [
       AppComponent,
@@ -30,8 +40,17 @@ import {ProductDetailsComponent} from './pages/product/product-details/product-d
       ProductDetailsComponent
     ],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, FormsModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

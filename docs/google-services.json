@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "5158821869",
+    "project_id": "caca-casa",
+    "storage_bucket": "caca-casa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5158821869:android:fc5205eaa12562ea9c11e4",
+        "android_client_info": {
+          "package_name": "br.com.tiagoiwamoto.cacacasa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5158821869-ugqg0jnunp2pkl5ft05d0bd5qe4f4nlj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKbKN9WRyyPprJczGcA4hfFUD22x-e9mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5158821869-ugqg0jnunp2pkl5ft05d0bd5qe4f4nlj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
