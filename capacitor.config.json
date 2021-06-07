@@ -1,6 +1,6 @@
 {
   "appId": "br.com.tiagoiwamoto.cacacasa",
-  "appName": "caça-casa",
+  "appName": "caca-casa",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
