@@ -6,6 +6,8 @@ import {
   PushNotificationActionPerformed,
   PushNotification,
   PushNotificationToken} from '@capacitor/core';
+import {ToastController} from '@ionic/angular';
+import {UserInterface} from '../view-models/user.interface';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const { PushNotifications } = Plugins;
@@ -15,7 +17,10 @@ const { PushNotifications } = Plugins;
 })
 export class FcmService {
 
-  constructor(private router: Router) { }
+  userInterface: UserInterface;
+
+  constructor(private router: Router,
+              private toastController: ToastController) { }
 
   initPush() {
     if(Capacitor.platform !== 'web'){
@@ -45,6 +50,14 @@ export class FcmService {
     PushNotifications.addListener(
       'pushNotificationReceived',
       async (notification: PushNotification) => {
+        const toast = await this.toastController.create({
+          message: notification.body,
+          duration: 2000
+        });
+        this.userInterface = JSON.parse(localStorage.getItem('user'));
+        if(this.userInterface.userType === 'CORRETOR'){
+          await toast.present();
+        }
         console.log('Push received: ' + JSON.stringify(notification));
       }
     );
