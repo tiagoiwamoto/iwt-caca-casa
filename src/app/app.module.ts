@@ -17,6 +17,12 @@ import {UserSignComponent} from './pages/user/user-sign/user-sign.component';
 import {UserProductRegisterComponent} from './pages/user/user-products/user-product-register/user-product-register.component';
 import {ProductListComponent} from './pages/product/product-list/product-list.component';
 import {ProductDetailsComponent} from './pages/product/product-details/product-details.component';
+import {ProductNegociateComponent} from './pages/product/product-negociate/product-negociate.component';
+import {NegociateListComponent} from './pages/negociate/negociate-list/negociate-list.component';
+import {NegociateChatComponent} from './pages/negociate/negociate-chat/negociate-chat.component';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 const config = {
   apiKey: 'AIzaSyCKbKN9WRyyPprJczGcA4hfFUD22x-e9mw',
@@ -24,7 +30,8 @@ const config = {
   databaseURL: 'https://caca-casa-default-rtdb.firebaseio.com',
   projectId: 'caca-casa',
   storageBucket: 'caca-casa.appspot.com',
-  messagingSenderId: '5158821869'
+  messagingSenderId: '5158821869',
+  appId: ''
 };
 
 @NgModule({
@@ -37,7 +44,10 @@ const config = {
       UserSignComponent,
       UserProductRegisterComponent,
       ProductListComponent,
-      ProductDetailsComponent
+      ProductDetailsComponent,
+      ProductNegociateComponent,
+      NegociateListComponent,
+      NegociateChatComponent,
     ],
   entryComponents: [],
   imports: [
@@ -47,6 +57,9 @@ const config = {
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

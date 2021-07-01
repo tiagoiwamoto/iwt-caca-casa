@@ -12,7 +12,7 @@ export class AppGatewayService {
   public async call(path: string, body: any, httpAction: HttpActionEnum, appHeaders: HttpHeaders): Promise<any>{
     switch (httpAction){
       case HttpActionEnum.GET:
-        return this.http.get(path).toPromise();
+        return this.http.get(path, {headers: appHeaders}).toPromise();
       case HttpActionEnum.POST:
         return this.http.post(path, JSON.stringify(body), {headers: appHeaders}).toPromise();
       case HttpActionEnum.PUT:

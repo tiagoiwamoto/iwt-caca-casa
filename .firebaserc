@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "caca-casa": {
+      "hosting": {
+        "app": [
+          "caca-casa"
+        ]
+      }
+    }
+  }
+}

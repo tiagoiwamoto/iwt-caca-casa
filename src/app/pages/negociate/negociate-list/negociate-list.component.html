@@ -1,0 +1,35 @@
+<ion-content fullscreen>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!--        <ion-button>-->
+      <!--          <ion-icon slot="icon-only" ios="reorder-four-outline" md="reorder-four-outline"></ion-icon>-->
+      <!--        </ion-button>-->
+      <ion-menu-button color="dark" menu="start" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Negociações</ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-list-header>
+      Suas negociações
+    </ion-list-header>
+
+    <ion-item (click)="goTo('/negociate/chat', message.messages, message.userTo, message.userFrom)" *ngFor="let message of messages">
+      <ion-avatar slot="start">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=c">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{message.userTo}}</h2>
+        <p>{{message.messages[message.messages.length - 1].message}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

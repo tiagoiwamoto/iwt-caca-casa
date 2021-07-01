@@ -27,6 +27,11 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate(['/list']);
   }
 
+  goTo(page): void{
+    this.modalController.dismiss();
+    this.router.navigate([page]);
+  }
+
   async closeModal() {
     await this.modalController.dismiss();
   }

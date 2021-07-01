@@ -1,0 +1,47 @@
+<ion-content fullscreen>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!--        <ion-button>-->
+      <!--          <ion-icon slot="icon-only" ios="reorder-four-outline" md="reorder-four-outline"></ion-icon>-->
+      <!--        </ion-button>-->
+      <ion-menu-button color="dark" menu="start" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Negociação</ion-title>
+  </ion-toolbar>
+
+  <div class="messages" id="chatNegociate">
+    <ion-card *ngFor="let msg of messages" class="mt-1">
+      <ion-item>
+        <ion-label *ngIf="msg.type === 'CORRETOR'" class="msg-corretor">{{msg.message}} :{{msg.userId}}</ion-label>
+        <ion-label *ngIf="msg.type === 'USUARIO'" class="msg-user">{{msg.userId}}: {{msg.message}}</ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Digite sua mensagem</ion-label>
+              <ion-input [(ngModel)]="tmpMessage"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="performSendMessage()" color="primary">Enviar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
+
+
